@@ -88,8 +88,9 @@ def reinitscreen():
     groundPickup_State.set(False)   
     SSCargoHatch_Var.set(False)
     SSCargoCargo_Var.set(False)
-    touchedRocketLate.set(False)
-    deadbot.set(False)
+    touchedRocketLate_State.set(False)
+    deadbot_State.set(False)
+    badData_State.set(False)
     SSCargoSSHRocketCargo_Var.set(0)
     SSCargoSSMRocketCargo_Var.set(0) 
     SSCargoSSLRocketCargo_Var.set(0)  
@@ -207,19 +208,23 @@ deadbot_State = BooleanVar(False)
 deadbot = Checkbutton(postMatch, text= 'Deadbot?', var=deadbot_State)
 deadbot.grid(row=1, column=0, ipady=20)
 
+badData_State = BooleanVar(False)
+badData = Checkbutton(postMatch, text='Dont use this data', var=badData_State)
+badData.grid(row=5, column=0)
+
 cargoHatchLBL = Label(preMatch, text='Started with what in their cargo ship?')
 cargoHatchLBL.grid(row=2, column=0, columnspan=2, ipady=23)
 
 startRight = IntVar()
-cargoRight = Radiobutton(preMatch, text = 'Cargo Right', var=startRight)
+cargoRight = Radiobutton(preMatch, text = 'Cargo Right', value=1, var=startRight)
 cargoRight.grid(row=3, column=1)
-hatchRight = Radiobutton(preMatch, text='Hatch Right', var=startRight)
+hatchRight = Radiobutton(preMatch, text='Hatch Right', value=2, var=startRight)
 hatchRight.grid(row=3, column=0)
 
 startLeft = IntVar()
-cargoLeft = Radiobutton(preMatch, text = 'Cargo Left', var=startLeft)
+cargoLeft = Radiobutton(preMatch, text = 'Cargo Left', value=1, var=startLeft)
 cargoLeft.grid(row=4, column=1)
-hatchLeft = Radiobutton(preMatch, text='Hatch Left', var=startLeft)
+hatchLeft = Radiobutton(preMatch, text='Hatch Left', value=2, var=startLeft)
 hatchLeft.grid(row=4, column=0, ipady=20)
 
 startPosLBL = Label(preMatch, text='Where Did they Start?')
@@ -652,15 +657,17 @@ teamnum.grid(column=3, row=0)
 teamnumLBL = Label(preMatch, text='  Team# you are with:')
 teamnumLBL.grid(row=0, column=2)
 
-LBL2 = Label(postMatch, text=' ')
-LBL2.grid(row=5, column=0, ipady=40)
-send = Button(postMatch, text='send', command=reinitscreen)
-send.grid(row=5, column=1, ipady=20, ipadx=80)
-#define button effects
-def clicked():
-    messagebox.showinfo('Sent', 'Your scouting data was sent. Find your robot in the next round. Please remeber to always be gracious and professional at competions! Do NOT click this button again until the end of the next round. If you do you will be fed to the Killer Rabbot.')
+def send():
+    messagebox.askokcancel('Are you sure?', 'If you are ready to send click ok. If you are not ready click cancel, and click send again when you are ready.')
 #    sendToDatabase()
     reinitscreen()
+    
+LBL2 = Label(postMatch, text=' ')
+LBL2.grid(row=5, column=0, ipady=40)
+sendBTN = Button(postMatch, text='send', command=send)
+sendBTN.grid(row=5, column=1, ipady=20, ipadx=80)
+#define button effects
+
 
 
     #finish
