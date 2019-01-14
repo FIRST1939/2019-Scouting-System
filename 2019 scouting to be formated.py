@@ -210,7 +210,7 @@ deadbot.grid(row=1, column=0, ipady=20)
 
 badData_State = BooleanVar(False)
 badData = Checkbutton(postMatch, text='Dont use this data', var=badData_State)
-badData.grid(row=5, column=0)
+badData.grid(row=5, column=0, ipady=40)
 
 cargoHatchLBL = Label(preMatch, text='Started with what in their cargo ship?')
 cargoHatchLBL.grid(row=2, column=0, columnspan=2, ipady=23)
@@ -662,8 +662,6 @@ def send():
 #    sendToDatabase()
     reinitscreen()
     
-LBL2 = Label(postMatch, text=' ')
-LBL2.grid(row=5, column=0, ipady=40)
 sendBTN = Button(postMatch, text='send', command=send)
 sendBTN.grid(row=5, column=1, ipady=20, ipadx=80)
 #define button effects
