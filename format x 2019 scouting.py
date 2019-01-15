@@ -10,7 +10,6 @@ from tkinter import font
 from tkinter import messagebox
 from tkinter import END
 from tkinter import Radiobutton
-from tkinter import Text
 import os
 #import match_dbconn
 
@@ -91,8 +90,7 @@ def reinitscreen():
     SSCargoCargo_Var.set(False)
     touchedRocketLate_State.set(False)
     deadbot_State.set(False)
-    badData_State.set(False)
-    send_State.set(False)
+                badData_State.set(False)
     SSCargoSSHRocketCargo_Var.set(0)
     SSCargoSSMRocketCargo_Var.set(0) 
     SSCargoSSLRocketCargo_Var.set(0)  
@@ -113,7 +111,7 @@ def reinitscreen():
     teledropCargo_Var.set(0) 
     startRight.set(0)
     startLeft.set(0)
-    comments.delete(1.0, END)
+    comments.delete(0, END)
     
     #edit the tabs here as needed
 tab_control = ttk.Notebook(window)
@@ -129,8 +127,6 @@ tab_control.add(endGame, text='End Game')
 tab_control.add(postMatch, text='Post-Match')
 tab_control.pack(expand=1, fill='both')
 
-#tele.columnconfigure(1, weight=1)
-
 #keyboard
 def popup_keyboard(event):
     os.popen('matchbox-keyboard','r',4096)
@@ -139,14 +135,14 @@ def popup_keyboard(event):
 #put the buttons and spindowns and text boxes and other fun stuff here
 crossHABLine_State = BooleanVar(False)
 crossHABLine = Checkbutton(sandstorm, text='Cross HAB Line', var=crossHABLine_State)
-crossHABLine.grid(row=0, column=0, pady=17)
+crossHABLine.grid(row=0, column=0, ipady=17)
 
 dangerousSSDriving_State = BooleanVar(False)
 dangerousSSDriving = Checkbutton(sandstorm, text='Drove Dangerously during Sandstorm', var=dangerousSSDriving_State)  
-dangerousSSDriving.grid(row=5, column =0, pady=15, columnspan=5)
+dangerousSSDriving.grid(row=5, column =0, ipady=15, columnspan=5)
 
 climbLevelLBL = Label(endGame, text='How High did they Climb?')
-climbLevelLBL.grid(row=0, column=0, pady=17)
+climbLevelLBL.grid(row=0, column=0, ipady=17)
 
 attemptLvl1_State = BooleanVar(False)
 attemptLvl1 = Checkbutton(endGame, text='Attempt Level 1', var=attemptLvl1_State)
@@ -154,11 +150,11 @@ attemptLvl1.grid(row=1, column=0)
 
 reachLvl1_State = BooleanVar(False)
 reachLvl1= Checkbutton(endGame, text= 'Reach Level 1', var=reachLvl1_State)
-reachLvl1.grid(row=1, column=2, pady=17)
+reachLvl1.grid(row=1, column=1, ipady=17)
 
 attemptLvl2_State = BooleanVar(False)
 attemptLvl2= Checkbutton(endGame, text= 'Attempt Level 2', var=attemptLvl2_State)
-attemptLvl2.grid(row=2, column=0, pady=17)
+attemptLvl2.grid(row=2, column=0, ipady=17)
 
 attemptLvl3_State = BooleanVar(False)
 attemptLvl3= Checkbutton(endGame, text= 'Attempt Level 3', var=attemptLvl3_State)
@@ -166,19 +162,19 @@ attemptLvl3.grid(row=3, column=0)
 
 reachLvl2_State = BooleanVar(False)
 reachLvl2= Checkbutton(endGame, text= 'Reach Level 2', var=reachLvl2_State)
-reachLvl2.grid(row=2, column=2)
+reachLvl2.grid(row=2, column=1)
 
 reachLvl3_State = BooleanVar(False)
 reachLvl3= Checkbutton(endGame, text= 'Reach Level 3', var=reachLvl3_State)
-reachLvl3.grid(row=3, column=2, pady=17)
+reachLvl3.grid(row=3, column=1, ipady=17)
 
 deployedRamps_State = BooleanVar(False)
 deployedRamps= Checkbutton(endGame, text= 'Deployed Ramps', var=deployedRamps_State)
-deployedRamps.grid(row=4, column=2)
+deployedRamps.grid(row=4, column=1)
 
 attemptDeployedRamps_State = BooleanVar(False)
 attemptDeployedRamps= Checkbutton(endGame, text= 'Attempted to Deploy Ramps', var=attemptDeployedRamps_State)
-attemptDeployedRamps.grid(row=4, column=0, pady=17)
+attemptDeployedRamps.grid(row=4, column=0, ipady=17)
 
 usedAnotherRobot_State = BooleanVar(False)
 usedAnotherRobot= Checkbutton(endGame, text= 'Tried/Used Another Robot(ramps/another team lifted them)', var=usedAnotherRobot_State)
@@ -186,38 +182,38 @@ usedAnotherRobot.grid(row=6, column=0, columnspan=2)
 
 lift_State = BooleanVar(False)
 lift= Checkbutton(endGame, text= 'Lifted another bot', var=lift_State)
-lift.grid(row=5, column=2)
+lift.grid(row=5, column=1)
 
 attemptLift_State = BooleanVar(False)
 attemptLift= Checkbutton(endGame, text= 'Attemted to lift another bot', var=attemptLift_State)
-attemptLift.grid(row=5, column=0, pady=17)
+attemptLift.grid(row=5, column=0, ipady=17)
 
 defense_State = BooleanVar(False)
 defense= Checkbutton(tele, text= 'Any Defense Played?', var=defense_State)
-defense.grid(row=6, column=0, columnspan=2, pady=17)
+defense.grid(row=6, column=0, columnspan=2, ipady=17)
 
 noAttempt_State = BooleanVar(False)
 noAttempt = Checkbutton(endGame, text= 'Did not try to climb', var=noAttempt_State)
-noAttempt.grid(column=0, row=7, pady=17)
+noAttempt.grid(column=0, row=7, ipady=17)
 
 groundPickup_State = BooleanVar(False)
 groundPickup = Checkbutton(postMatch, text='Did they pickup hatch panels from the ground?', var=groundPickup_State)
-groundPickup.grid(row=2, column=0, pady=20)
+groundPickup.grid(row=2, column=0, ipady=20)
 
 touchedRocketLate_State = BooleanVar(False)
 touchedRocketLate = Checkbutton(postMatch, text = 'Touched the enemy rocket during the last 20 seconds', var=touchedRocketLate_State)
-touchedRocketLate.grid(row=0, column=0, pady=17)
+touchedRocketLate.grid(row=0, column=0, ipady=17)
 
 deadbot_State = BooleanVar(False)
 deadbot = Checkbutton(postMatch, text= 'Deadbot?', var=deadbot_State)
-deadbot.grid(row=1, column=0, pady=20)
+deadbot.grid(row=1, column=0, ipady=20)
 
 badData_State = BooleanVar(False)
 badData = Checkbutton(postMatch, text='Dont use this data', var=badData_State)
-badData.grid(row=5, column=0, pady=40)
+badData.grid(row=5, column=0, ipady=40)
 
 cargoHatchLBL = Label(preMatch, text='Started with what in their cargo ship?')
-cargoHatchLBL.grid(row=2, column=0, columnspan=2, pady=23)
+cargoHatchLBL.grid(row=2, column=0, columnspan=2, ipady=23)
 
 startRight = IntVar()
 cargoRight = Radiobutton(preMatch, text = 'Cargo Right', value=1, var=startRight)
@@ -229,10 +225,10 @@ startLeft = IntVar()
 cargoLeft = Radiobutton(preMatch, text = 'Cargo Left', value=1, var=startLeft)
 cargoLeft.grid(row=4, column=1)
 hatchLeft = Radiobutton(preMatch, text='Hatch Left', value=2, var=startLeft)
-hatchLeft.grid(row=4, column=0, pady=20)
+hatchLeft.grid(row=4, column=0, ipady=20)
 
 startPosLBL = Label(preMatch, text='Where Did they Start?')
-startPosLBL.grid(column=0, row=1, pady=23)
+startPosLBL.grid(column=0, row=1, ipady=23)
 startPos = ttk.Combobox(preMatch)
 startPos['values']= ("Level 1 Mid", "Level 1 Left", "Level 1 right", "Level 2 Left", "Level 2 Right")
 startPos.current(0)
@@ -253,7 +249,7 @@ def SSCargoHatchM1():
 SSCargoHatch = Label(sandstorm, text=SSCargoHatch_Var.get(), textvariable = SSCargoHatch_Var)
 SSCargoHatchP = Button(sandstorm, text='+', command=SSCargoHatchP1, bg='green4')
 SSCargoHatchM = Button(sandstorm, text='-', command=SSCargoHatchM1, bg='red4')
-SSCargoHatch.grid(column=2, row=1, pady=20)
+SSCargoHatch.grid(column=2, row=1, ipady=20)
 SSCargoHatchP.grid(column=3, row=1)
 SSCargoHatchM.grid(column=1, row=1)
 SSCargoHatchlbl = Label(sandstorm, text = "Cargo Ship Hatch")
@@ -294,7 +290,7 @@ def SSCargoSSHRocketHatchM1():
 SSCargoSSHRocketHatch = Label(sandstorm, text=SSCargoSSHRocketHatch_Var.get(), textvariable = SSCargoSSHRocketHatch_Var)
 SSCargoSSHRocketHatchP = Button(sandstorm, text='+', command=SSCargoSSHRocketHatchP1, bg='green4')
 SSCargoSSHRocketHatchM = Button(sandstorm, text='-', command=SSCargoSSHRocketHatchM1, bg='red4')
-SSCargoSSHRocketHatch.grid(column=2, row=2, pady=20)
+SSCargoSSHRocketHatch.grid(column=2, row=2, ipady=20)
 SSCargoSSHRocketHatchP.grid(column=3, row=2)
 SSCargoSSHRocketHatchM.grid(column=1, row=2)
 SSCargoSSHRocketHatchlbl = Label(sandstorm, text = "High Rocket Hatch")
@@ -314,7 +310,7 @@ def SSCargoSSMRocketHatchM1():
 SSCargoSSMRocketHatch = Label(sandstorm, text=SSCargoSSMRocketHatch_Var.get(), textvariable = SSCargoSSMRocketHatch_Var)
 SSCargoSSMRocketHatchP = Button(sandstorm, text='+', command=SSCargoSSMRocketHatchP1, bg='green4')
 SSCargoSSMRocketHatchM = Button(sandstorm, text='-', command=SSCargoSSMRocketHatchM1, bg='red4')
-SSCargoSSMRocketHatch.grid(column=2, row=3, pady=20)
+SSCargoSSMRocketHatch.grid(column=2, row=3, ipady=20)
 SSCargoSSMRocketHatchP.grid(column=3, row=3)
 SSCargoSSMRocketHatchM.grid(column=1, row=3)
 SSCargoSSMRocketHatchlbl = Label(sandstorm, text = "Med Rocket Hatch")
@@ -334,7 +330,7 @@ def SSCargoSSLRocketHatchM1():
 SSCargoSSLRocketHatch = Label(sandstorm, text=SSCargoSSLRocketHatch_Var.get(), textvariable = SSCargoSSLRocketHatch_Var)
 SSCargoSSLRocketHatchP = Button(sandstorm, text='+', command=SSCargoSSLRocketHatchP1, bg='green4')
 SSCargoSSLRocketHatchM = Button(sandstorm, text='-', command=SSCargoSSLRocketHatchM1, bg='red4')
-SSCargoSSLRocketHatch.grid(column=2, row=4, pady=20)
+SSCargoSSLRocketHatch.grid(column=2, row=4, ipady=20)
 SSCargoSSLRocketHatchP.grid(column=3, row=4)
 SSCargoSSLRocketHatchM.grid(column=1, row=4)
 SSCargoSSLRocketHatchlbl = Label(sandstorm, text = "Low Rocket Hatch")
@@ -400,8 +396,6 @@ SSCargoSSHRocketCargoM.grid(column=5, row=2)
 SSCargoSSHRocketCargolbl = Label(sandstorm, text = "Med Rocket Cargo")
 SSCargoSSHRocketCargolbl.grid(column=4, row=2)
 
-
-spacingLBL = Label(tele, text=' ').grid(row=0, column=4, padx=80)
 TeleCargoHRocketCargo_Var = IntVar()
 def TeleCargoHRocketCargoP1():
     global TeleCargoHRocketCargo_Var
@@ -416,11 +410,11 @@ def TeleCargoHRocketCargoM1():
 TeleCargoHRocketCargo = Label(tele, text=TeleCargoHRocketCargo_Var.get(), textvariable = TeleCargoHRocketCargo_Var)
 TeleCargoHRocketCargoP = Button(tele, text='+', command=TeleCargoHRocketCargoP1, bg='green4')
 TeleCargoHRocketCargoM = Button(tele, text='-', command=TeleCargoHRocketCargoM1, bg='red4')
-TeleCargoHRocketCargo.grid(column=7, row=1)
-TeleCargoHRocketCargoP.grid(column=8, row=1)
-TeleCargoHRocketCargoM.grid(column=6, row=1)
+TeleCargoHRocketCargo.grid(column=6, row=1)
+TeleCargoHRocketCargoP.grid(column=7, row=1)
+TeleCargoHRocketCargoM.grid(column=5, row=1)
 TeleCargoHRocketCargolbl = Label(tele, text = "High Rocket Cargo")
-TeleCargoHRocketCargolbl.grid(column=5, row=1, pady=17)
+TeleCargoHRocketCargolbl.grid(column=4, row=1, ipady=17)
 
 TeleCargoMRocketCargo_Var = IntVar()
 def TeleCargoMRocketCargoP1():
@@ -436,11 +430,11 @@ def TeleCargoMRocketCargoM1():
 TeleCargoMRocketCargo = Label(tele, text=TeleCargoMRocketCargo_Var.get(), textvariable = TeleCargoMRocketCargo_Var)
 TeleCargoMRocketCargoP = Button(tele, text='+', command=TeleCargoMRocketCargoP1, bg='green4')
 TeleCargoMRocketCargoM = Button(tele, text='-', command=TeleCargoMRocketCargoM1, bg='red4')
-TeleCargoMRocketCargo.grid(column=7, row=2)
-TeleCargoMRocketCargoP.grid(column=8, row=2)
-TeleCargoMRocketCargoM.grid(column=6, row=2)
+TeleCargoMRocketCargo.grid(column=6, row=2)
+TeleCargoMRocketCargoP.grid(column=7, row=2)
+TeleCargoMRocketCargoM.grid(column=5, row=2)
 TeleCargoMRocketCargolbl = Label(tele, text = "Med Rocket Cargo")
-TeleCargoMRocketCargolbl.grid(column=5, row=2, pady=17)
+TeleCargoMRocketCargolbl.grid(column=4, row=2, ipady=17)
 
 TeleCargoLRocketCargo_Var = IntVar()
 def TeleCargoLRocketCargoP1():
@@ -456,11 +450,11 @@ def TeleCargoLRocketCargoL1():
 TeleCargoLRocketCargo = Label(tele, text=TeleCargoLRocketCargo_Var.get(), textvariable = TeleCargoLRocketCargo_Var)
 TeleCargoLRocketCargoP = Button(tele, text='+', command=TeleCargoLRocketCargoP1, bg='green4')
 TeleCargoLRocketCargoL = Button(tele, text='-', command=TeleCargoLRocketCargoL1, bg='red4')
-TeleCargoLRocketCargo.grid(column=7, row=3)
-TeleCargoLRocketCargoP.grid(column=8, row=3)
-TeleCargoLRocketCargoL.grid(column=6, row=3)
+TeleCargoLRocketCargo.grid(column=6, row=3)
+TeleCargoLRocketCargoP.grid(column=7, row=3)
+TeleCargoLRocketCargoL.grid(column=5, row=3)
 TeleCargoLRocketCargolbl = Label(tele, text = "Low Rocket Cargo")
-TeleCargoLRocketCargolbl.grid(column=5, row=3, pady=17)
+TeleCargoLRocketCargolbl.grid(column=4, row=3, ipady=17)
 
 
 TeleHatchHRocketHatch_Var = IntVar()
@@ -557,11 +551,11 @@ def teleCargoCargoM1():
 teleCargoCargo = Label(tele, text=teleCargoCargo_Var.get(), textvariable = teleCargoCargo_Var)
 teleCargoCargoP = Button(tele, text='+', command=teleCargoCargoP1, bg='green4')
 teleCargoCargoM = Button(tele, text='-', command=teleCargoCargoM1, bg='red4')
-teleCargoCargo.grid(column=7, row=0)
-teleCargoCargoP.grid(column=8, row=0)
-teleCargoCargoM.grid(column=6, row=0)
+teleCargoCargo.grid(column=6, row=0)
+teleCargoCargoP.grid(column=7, row=0)
+teleCargoCargoM.grid(column=5, row=0)
 teleCargoCargolbl = Label(tele, text = "Cargo Ship Cargo")
-teleCargoCargolbl.grid(column=5, row=0, pady=17)
+teleCargoCargolbl.grid(column=4, row=0, ipady=17)
 
 teledropCargo_Var = IntVar()
 def teledropCargoP1():
@@ -577,11 +571,11 @@ def teledropCargoM1():
 teledropCargo = Label(tele, text=teledropCargo_Var.get(), textvariable = teledropCargo_Var)
 teledropCargoP = Button(tele, text='+', command=teledropCargoP1, bg='green4')
 teledropCargoM = Button(tele, text='-', command=teledropCargoM1, bg='red4')
-teledropCargo.grid(column=7, row=4)
-teledropCargoP.grid(column=8, row=4)
-teledropCargoM.grid(column=6, row=4)
+teledropCargo.grid(column=6, row=4)
+teledropCargoP.grid(column=7, row=4)
+teledropCargoM.grid(column=5, row=4)
 teledropCargolbl = Label(tele, text = "Dropped Cargo")
-teledropCargolbl.grid(column=5, row=4)
+teledropCargolbl.grid(column=4, row=4)
 
 teledropHatch_Var = IntVar()
 def teledropHatchP1():
@@ -601,7 +595,7 @@ teledropHatch.grid(column=2, row=4)
 teledropHatchP.grid(column=3, row=4)
 teledropHatchM.grid(column=1, row=4)
 teledropHatchlbl = Label(tele, text = "Dropped Hatch")
-teledropHatchlbl.grid(column=0, row=4, pady=17)
+teledropHatchlbl.grid(column=0, row=4, ipady=17)
 
 foul_Var = IntVar()
 def foulP1():
@@ -621,7 +615,7 @@ foul.grid(column=2, row=5)
 foulP.grid(column=3, row=5)
 foulM.grid(column=1, row=5)
 foullbl = Label(tele, text = "Foul")
-foullbl.grid(column=0, row=5, pady=17)
+foullbl.grid(column=0, row=5, ipady=17)
 
 techFoul_Var = IntVar()
 def techFoulP1():
@@ -637,24 +631,25 @@ def techFoulM1():
 techFoul = Label(tele, text=techFoul_Var.get(), textvariable = techFoul_Var)
 techFoulP = Button(tele, text='+', command=techFoulP1, bg='green4')
 techFoulM = Button(tele, text='-', command=techFoulM1, bg='red4')
-techFoul.grid(column=7, row=5)
-techFoulP.grid(column=8, row=5)
-techFoulM.grid(column=6, row=5)
+techFoul.grid(column=6, row=5)
+techFoulP.grid(column=7, row=5)
+techFoulM.grid(column=5, row=5)
 techFoullbl = Label(tele, text = "Tech Foul")
-techFoullbl.grid(column=5, row=5)
+techFoullbl.grid(column=4, row=5)
 
-name = Entry(preMatch, width= 30)
+name = ttk.Entry(preMatch, width= 30)
 name.bind('<Button-1>',popup_keyboard)
 name.grid(column=1, row=0)
 nameLBL = Label(preMatch, text = 'Name:')
-nameLBL.grid(column=0, row=0,ipady=17)
+nameLBL.grid(column=0, row=0, ipady=17)
 
-comments= Text(postMatch, width=80, height=6)
+comments= ttk.Entry(postMatch, width=80)
 comments.bind('<Button-1>', popup_keyboard)
 comments.grid(column=0, row=4, columnspan=2)
 commentsLBL = Label(postMatch, text='Comments:')
-commentsLBL.grid(column=0, row=3, pady=21, columnspan=3)
-commentSpacingLBL = Label(postMatch, text=' ').grid(column=2, row=0, padx=20)
+commentsLBL.grid(column=0, row=3, ipady=21)
+LBL = Label(postMatch, text=' ')
+LBL.grid(row=4, column=3, ipady=20)
 
 teamnum = ttk.Entry(preMatch, width=10)
 teamnum.bind('<Button-1>', popup_keyboard)
@@ -663,14 +658,12 @@ teamnumLBL = Label(preMatch, text='  Team# you are with:')
 teamnumLBL.grid(row=0, column=2)
 
 def send():
-    sendMSG = messagebox.askokcancel('Are you sure?', 'If you are ready to send click ok. If you are not ready click cancel, and click send again when you are ready.')
-    if sendMSG is True:
-        #sendToDatabase()
-        reinitscreen()
+    messagebox.askokcancel('Are you sure?', 'If you are ready to send click ok. If you are not ready click cancel, and click send again when you are ready.')
+#    sendToDatabase()
+    reinitscreen()
     
-send_State = BooleanVar(False)
 sendBTN = Button(postMatch, text='send', command=send)
-sendBTN.grid(row=5, column=1, ipadx=100)
+sendBTN.grid(row=5, column=1, ipady=20, ipadx=80)
 #define button effects
 
 
