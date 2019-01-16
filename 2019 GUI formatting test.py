@@ -1,4 +1,4 @@
- #imports
+     #imports
 from tkinter import Entry
 from tkinter import Tk
 from tkinter import Checkbutton
@@ -134,8 +134,8 @@ tab_control.pack(expand=1, fill='both')
 
 #keyboard
 def popup_keyboard(event):
-    os.popen('matchbox-keyboard','r',4096)
-    
+#    os.popen('matchbox-keyboard','r',4096)
+     pass   
     
 #put the buttons and spindowns and text boxes and other fun stuff here
 crossHABLine_State = BooleanVar(False)
@@ -656,7 +656,7 @@ comments.grid(column=0, row=4, columnspan=2, padx=30)
 commentsLBL = Label(postMatch, text='Comments:')
 commentsLBL.grid(column=0, row=3, pady=21, columnspan=3)
 commentSpacingLBL = Label(postMatch, text=' ').grid(column=2, row=0, padx=20)
-
+    
 teamnum = ttk.Entry(preMatch, width=10)
 teamnum.bind('<Button-1>', popup_keyboard)
 teamnum.grid(column=3, row=0)
@@ -665,10 +665,10 @@ teamnumLBL.grid(row=0, column=2)
 
 def send():
     sendMSG = messagebox.askokcancel('Are you sure?', 'If you are ready to send click ok. If you are not ready click cancel, and click send again when you are ready.')
-    if sendMSG is True & badData is False:
+    if sendMSG is True & badData_State.get() is False:
         #sendToDatabase()
         reinitscreen()
-    if badData is True:
+    if badData_State.get() is True & sendMSG is True:
         reinitscreen()
     
 send_State = BooleanVar(False)

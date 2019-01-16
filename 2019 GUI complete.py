@@ -1,4 +1,4 @@
- #imports
+     #imports
 from tkinter import Entry
 from tkinter import Tk
 from tkinter import Checkbutton
@@ -12,7 +12,7 @@ from tkinter import messagebox
 from tkinter import END
 from tkinter import Radiobutton
 from tkinter import Text
-import os
+#import os
 #import match_dbconn
 
 #opening tkinter
@@ -134,8 +134,8 @@ tab_control.pack(expand=1, fill='both')
 
 #keyboard
 def popup_keyboard(event):
-    os.popen('matchbox-keyboard','r',4096)
-    
+#    os.popen('matchbox-keyboard','r',4096)
+     pass   
     
 #put the buttons and spindowns and text boxes and other fun stuff here
 crossHABLine_State = BooleanVar(False)
@@ -155,11 +155,11 @@ attemptLvl1.grid(row=1, column=0)
 
 reachLvl1_State = BooleanVar(False)
 reachLvl1= Checkbutton(endGame, text= 'Reach Level 1', var=reachLvl1_State)
-reachLvl1.grid(row=1, column=2, pady=17)
+reachLvl1.grid(row=1, column=2, pady=12)
 
 attemptLvl2_State = BooleanVar(False)
 attemptLvl2= Checkbutton(endGame, text= 'Attempt Level 2', var=attemptLvl2_State)
-attemptLvl2.grid(row=2, column=0, pady=17)
+attemptLvl2.grid(row=2, column=0, pady=12)
 
 attemptLvl3_State = BooleanVar(False)
 attemptLvl3= Checkbutton(endGame, text= 'Attempt Level 3', var=attemptLvl3_State)
@@ -171,7 +171,7 @@ reachLvl2.grid(row=2, column=2)
 
 reachLvl3_State = BooleanVar(False)
 reachLvl3= Checkbutton(endGame, text= 'Reach Level 3', var=reachLvl3_State)
-reachLvl3.grid(row=3, column=2, pady=17)
+reachLvl3.grid(row=3, column=2, pady=12)
 
 deployedRamps_State = BooleanVar(False)
 deployedRamps= Checkbutton(endGame, text= 'Deployed Ramps', var=deployedRamps_State)
@@ -195,7 +195,7 @@ attemptLift.grid(row=5, column=0, pady=17)
 
 defense_State = BooleanVar(False)
 defense= Checkbutton(tele, text= 'Any Defense Played?', var=defense_State)
-defense.grid(row=6, column=0, columnspan=2, pady=17)
+defense.grid(row=6, column=0, columnspan=2, pady=15)
 
 noAttempt_State = BooleanVar(False)
 noAttempt = Checkbutton(endGame, text= 'Did not try to climb', var=noAttempt_State)
@@ -203,15 +203,15 @@ noAttempt.grid(column=0, row=7, pady=17)
 
 groundPickup_State = BooleanVar(False)
 groundPickup = Checkbutton(postMatch, text='Did they pickup hatch panels from the ground?', var=groundPickup_State)
-groundPickup.grid(row=2, column=0, pady=20)
+groundPickup.grid(row=2, column=0, pady=15)
 
 touchedRocketLate_State = BooleanVar(False)
 touchedRocketLate = Checkbutton(postMatch, text = 'Touched the enemy rocket during the last 20 seconds', var=touchedRocketLate_State)
-touchedRocketLate.grid(row=0, column=0, pady=17)
+touchedRocketLate.grid(row=0, column=0, pady=12)
 
 deadbot_State = BooleanVar(False)
 deadbot = Checkbutton(postMatch, text= 'Deadbot?', var=deadbot_State)
-deadbot.grid(row=1, column=0, pady=20)
+deadbot.grid(row=1, column=0, pady=15)
 
 badData_State = BooleanVar(False)
 badData = Checkbutton(postMatch, text='Dont use this data', var=badData_State)
@@ -421,7 +421,7 @@ TeleCargoHRocketCargo.grid(column=7, row=1)
 TeleCargoHRocketCargoP.grid(column=8, row=1)
 TeleCargoHRocketCargoM.grid(column=6, row=1)
 TeleCargoHRocketCargolbl = Label(tele, text = "High Rocket Cargo")
-TeleCargoHRocketCargolbl.grid(column=5, row=1, pady=17)
+TeleCargoHRocketCargolbl.grid(column=5, row=1, pady=15)
 
 TeleCargoMRocketCargo_Var = IntVar()
 def TeleCargoMRocketCargoP1():
@@ -441,7 +441,7 @@ TeleCargoMRocketCargo.grid(column=7, row=2)
 TeleCargoMRocketCargoP.grid(column=8, row=2)
 TeleCargoMRocketCargoM.grid(column=6, row=2)
 TeleCargoMRocketCargolbl = Label(tele, text = "Med Rocket Cargo")
-TeleCargoMRocketCargolbl.grid(column=5, row=2, pady=17)
+TeleCargoMRocketCargolbl.grid(column=5, row=2, pady=15)
 
 TeleCargoLRocketCargo_Var = IntVar()
 def TeleCargoLRocketCargoP1():
@@ -461,7 +461,7 @@ TeleCargoLRocketCargo.grid(column=7, row=3)
 TeleCargoLRocketCargoP.grid(column=8, row=3)
 TeleCargoLRocketCargoL.grid(column=6, row=3)
 TeleCargoLRocketCargolbl = Label(tele, text = "Low Rocket Cargo")
-TeleCargoLRocketCargolbl.grid(column=5, row=3, pady=17)
+TeleCargoLRocketCargolbl.grid(column=5, row=3, pady=15)
 
 
 TeleHatchHRocketHatch_Var = IntVar()
@@ -562,7 +562,7 @@ teleCargoCargo.grid(column=7, row=0)
 teleCargoCargoP.grid(column=8, row=0)
 teleCargoCargoM.grid(column=6, row=0)
 teleCargoCargolbl = Label(tele, text = "Cargo Ship Cargo")
-teleCargoCargolbl.grid(column=5, row=0, pady=17)
+teleCargoCargolbl.grid(column=5, row=0, pady=15)
 
 teledropCargo_Var = IntVar()
 def teledropCargoP1():
@@ -602,7 +602,7 @@ teledropHatch.grid(column=2, row=4)
 teledropHatchP.grid(column=3, row=4)
 teledropHatchM.grid(column=1, row=4)
 teledropHatchlbl = Label(tele, text = "Dropped Hatch")
-teledropHatchlbl.grid(column=0, row=4, pady=17)
+teledropHatchlbl.grid(column=0, row=4, pady=15)
 
 foul_Var = IntVar()
 def foulP1():
@@ -622,7 +622,7 @@ foul.grid(column=2, row=5)
 foulP.grid(column=3, row=5)
 foulM.grid(column=1, row=5)
 foullbl = Label(tele, text = "Foul")
-foullbl.grid(column=0, row=5, pady=17)
+foullbl.grid(column=0, row=5, pady=15)
 
 techFoul_Var = IntVar()
 def techFoulP1():
@@ -650,13 +650,13 @@ name.grid(column=1, row=0)
 nameLBL = Label(preMatch, text = 'Name:')
 nameLBL.grid(column=0, row=0,ipady=17)
 
-comments= Text(postMatch, width=80, height=5)
+comments= Text(postMatch, width=70, height=4)
 comments.bind('<Button-1>', popup_keyboard)
 comments.grid(column=0, row=4, columnspan=2, padx=30)
 commentsLBL = Label(postMatch, text='Comments:')
-commentsLBL.grid(column=0, row=3, pady=21, columnspan=3)
-commentSpacingLBL = Label(postMatch, text=' ').grid(column=2, row=0, padx=20)
-
+commentsLBL.grid(column=0, row=3, pady=15, columnspan=3)
+commentSpacingLBL = Label(postMatch, text=' ').grid(column=2, row=0, padx=10)
+    
 teamnum = ttk.Entry(preMatch, width=10)
 teamnum.bind('<Button-1>', popup_keyboard)
 teamnum.grid(column=3, row=0)
@@ -665,12 +665,16 @@ teamnumLBL.grid(row=0, column=2)
 
 def send():
     sendMSG = messagebox.askokcancel('Are you sure?', 'If you are ready to send click ok. If you are not ready click cancel, and click send again when you are ready.')
-    if sendMSG is True & badData is False:
-        #sendToDatabase()
+    print(badData_State.get())
+    print(sendMSG)
+    if (sendMSG is True) & (badData_State.get() is False):
+        print('calling Reinitscreen')
         reinitscreen()
-    if badData is True:
+        
+        
+    if (badData_State.get() is True) & (sendMSG is True):
         reinitscreen()
-    
+
 send_State = BooleanVar(False)
 sendBTN = Button(postMatch, text='send', command=send)
 sendBTN.grid(row=5, column=1, ipadx=100)
