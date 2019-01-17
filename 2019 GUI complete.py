@@ -1,4 +1,4 @@
-     #imports
+                 #imports
 from tkinter import Entry
 from tkinter import Tk
 from tkinter import Checkbutton
@@ -194,7 +194,7 @@ attemptLift= Checkbutton(endGame, text= 'Attemted to lift another bot', var=atte
 attemptLift.grid(row=5, column=0, pady=17)
 
 defense_State = BooleanVar(False)
-defense= Checkbutton(tele, text= 'Any Defense Played?', var=defense_State)
+defense= Checkbutton(tele, text= 'Played Defense', var=defense_State)
 defense.grid(row=6, column=0, columnspan=2, pady=15)
 
 noAttempt_State = BooleanVar(False)
@@ -235,7 +235,7 @@ hatchLeft.grid(row=4, column=0, pady=20)
 startPosLBL = Label(preMatch, text='Where Did they Start?')
 startPosLBL.grid(column=0, row=1, pady=23)
 startPos = ttk.Combobox(preMatch)
-startPos['values']= ("Level 1 Mid", "Level 1 Left", "Level 1 right", "Level 2 Left", "Level 2 Right")
+startPos['values']= ("Level 1 Mid", "Level 1 Left", "Level 1 Right", "Level 2 Left", "Level 2 Right")
 startPos.current(0)
 startPos.grid(column= 1, row= 1, columnspan= 3)
 startPos.config(width= 28)
