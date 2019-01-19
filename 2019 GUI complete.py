@@ -13,7 +13,9 @@ from tkinter import END
 from tkinter import Radiobutton
 from tkinter import Text
 #import os
-#import match_dbconn
+import match_dbconn
+
+    
 
 #opening tkinter
 window = Tk() 
@@ -27,46 +29,81 @@ window.option_add("*Font", labelfont)
 labelfont = ('times', 15)
 labelfont2 = ('times', 5)
 
+
 #add print variables to test here
 
 
 
 #some data base stuff
-#def getTeam():
-#    team_no = match_dbconn.getMatchInfo(match_no,position)
-#    title_str = "MATCH NO: %s TEAM NO: %s  Postion %s" %(match_no,team_no,position)
-#    window.title(title_str)
-#    print(team_no)
-#    global teamno
-#    teamno = team_no
-#    
-#def getNextMatch():
-#   new_match_no = match_dbconn.getNextMatch();
-#    print('new match %s',new_match_no)
-#    global match_no
-#    global position
-#    print('current match %s',match_no)
-#    if new_match_no != match_no:
-#        print('reinitialize screens')
-#        match_no = new_match_no
-#        getTeam()
-#        btn.config(state = 'enabled')
-#        match_dbconn.setScout(Init.get(),match_no,position)
-#    window.after(2000,getNextMatch)
-#    
-#def sendToDatabase():
-#    val = selected.get()
-#    penalty_yellow = 0
-#    penalty_red = 0
-#    global teamno
-#    if val == 1:
-#        penalty_yellow = 1
-#    if val == 2:
-#        penalty_red = 1
-#    match_dbconn.setMatchScout(match_no,
-#                               teamno,
-#                               ) #export ALL variables within this prin
-#
+def getTeam():
+    team_no = match_dbconn.getMatchInfo(match_no,position)
+    title_str = "MATCH NO: %s TEAM NO: %s  Postion %s" %(match_no,team_no,position)
+    window.title(title_str)
+    print(team_no)
+    global teamno
+    teamno = team_no
+    
+def getNextMatch():
+   new_match_no = match_dbconn.getNextMatch();
+   print('new match %s',new_match_no)
+   global match_no
+   global position
+   print('current match %s',match_no)
+   if new_match_no != match_no:
+       print('reinitialize screens')
+       getTeam()
+       match_dbconn.setScout(scoutName.get(),match_no,position)
+   window.after(2000,getNextMatch)
+    
+def sendToDatabase():
+    match_dbconn.setMatchScout(match_no,
+                               teamno,
+                               crossHABLine.get(),
+                               dangerousSSDriving.get(),
+    	                       attemptLvl1.get(),
+                               reachLvl1.get(),
+                               attemptLvl2.get(),
+                               reachLvl2.get(),
+                               attemptLvl3.get(),
+                               reachLvl3.get(),
+                               deployedRamps.get(),
+                               attemptDeployedRamps.get(),
+                               usedAnotherRobot.get(),
+                               lift.get(),
+                               attemptLift.get(),
+                               defense.get(),
+                              noAttempt.get(),
+                              groundPickup.get(),
+                              SSCargoHatch.get(),
+                              SSCargoCargo.get(),
+                              touchedRocketLate.get(),
+                              deadbot.get(),
+                              SSCargoSSHRocketCargo.get(),
+                              SSCargoSSMRocketCargo.get(),
+                              SSCargoSSLRocketCargo.get(),
+                              SSCargoSSHRocketHatch.get(),
+                              SSCargoSSMRocketHatch.get(),
+                              SSCargoSSLRocketHatch.get(),
+                              techFoul.get(),
+                              foul.get(),
+                              teleCargoCargo.get(),
+                              teleCargoHatch.get(),
+                              TeleHatchLRocketHatch.get(),
+                              TeleHatchMRocketHatch.get(),
+                              TeleHatchHRocketHatch.get(),
+                              TeleCargoLRocketCargo.get(),
+                              TeleCargoMRocketCargo.get(),
+                              TeleCargoHRocketCargo.get(),
+                              teledropHatch.get(),
+                              teledropCargo.get(),
+                              startPos.get(),
+                              startLeft.get(),
+                              comments.get(),
+                              scoutName.get(),
+                              startRight.get(),
+                              teamnum.get(),
+                    ) #export ALL variables within this prin
+
 
 
 
@@ -644,9 +681,9 @@ techFoulM.grid(column=6, row=5)
 techFoullbl = Label(tele, text = "Tech Foul")
 techFoullbl.grid(column=5, row=5)
 
-name = Entry(preMatch, width= 30)
-name.bind('<Button-1>',popup_keyboard)
-name.grid(column=1, row=0)
+scoutName = Entry(preMatch, width= 30)
+scoutName.bind('<Button-1>',popup_keyboard)
+scoutName.grid(column=1, row=0)
 nameLBL = Label(preMatch, text = 'Name:')
 nameLBL.grid(column=0, row=0,ipady=17)
 
