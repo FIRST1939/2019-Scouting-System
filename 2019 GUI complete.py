@@ -58,47 +58,47 @@ def getNextMatch():
 def sendToDatabase():
     match_dbconn.setMatchScout(match_no,
                                teamno,
-                               crossHABLine.get(),
-                               dangerousSSDriving.get(),
-    	                       attemptLvl1.get(),
-                               reachLvl1.get(),
-                               attemptLvl2.get(),
-                               reachLvl2.get(),
-                               attemptLvl3.get(),
-                               reachLvl3.get(),
-                               deployedRamps.get(),
-                               attemptDeployedRamps.get(),
-                               usedAnotherRobot.get(),
-                               lift.get(),
-                               attemptLift.get(),
-                               defense.get(),
-                              noAttempt.get(),
-                              groundPickup.get(),
-                              SSCargoHatch.get(),
-                              SSCargoCargo.get(),
-                              touchedRocketLate.get(),
-                              deadbot.get(),
-                              SSCargoSSHRocketCargo.get(),
-                              SSCargoSSMRocketCargo.get(),
-                              SSCargoSSLRocketCargo.get(),
-                              SSCargoSSHRocketHatch.get(),
-                              SSCargoSSMRocketHatch.get(),
-                              SSCargoSSLRocketHatch.get(),
-                              techFoul.get(),
-                              foul.get(),
-                              teleCargoCargo.get(),
-                              teleCargoHatch.get(),
-                              TeleHatchLRocketHatch.get(),
-                              TeleHatchMRocketHatch.get(),
-                              TeleHatchHRocketHatch.get(),
-                              TeleCargoLRocketCargo.get(),
-                              TeleCargoMRocketCargo.get(),
-                              TeleCargoHRocketCargo.get(),
-                              teledropHatch.get(),
-                              teledropCargo.get(),
+                               crossHABLine_State.get(),
+                               dangerousSSDriving_State.get(),
+    	                       attemptLvl1_State.get(),
+                               reachLvl1_State.get(),
+                               attemptLvl2_State.get(),
+                               reachLvl2_State.get(),
+                               attemptLvl3_State.get(),
+                               reachLvl3_State.get(),
+                               deployedRamps_State.get(),
+                               attemptDeployedRamps_State.get(),
+                               usedAnotherRobot_State.get(),
+                               lift_State.get(),
+                               attemptLift_State.get(),
+                               defense_State.get(),
+                              noAttempt_State.get(),
+                              groundPickup_State.get(),
+                              SSCargoHatch_Var.get(),
+                              SSCargoCargo_Var.get(),
+                              touchedRocketLate_State.get(),
+                              deadbot_State.get(),
+                              SSCargoSSHRocketCargo_Var.get(),
+                              SSCargoSSMRocketCargo_Var.get(),
+                              SSCargoSSLRocketCargo_Var.get(),
+                              SSCargoSSHRocketHatch_Var.get(),
+                              SSCargoSSMRocketHatch_Var.get(),
+                              SSCargoSSLRocketHatch_Var.get(),
+                              techFoul_Var.get(),
+                              foul_Var.get(),
+                              teleCargoCargo_Var.get(),
+                              teleCargoHatch_Var.get(),
+                              TeleHatchLRocketHatch_Var.get(),
+                              TeleHatchMRocketHatch_Var.get(),
+                              TeleHatchHRocketHatch_Var.get(),
+                              TeleCargoLRocketCargo_Var.get(),
+                              TeleCargoMRocketCargo_Var.get(),
+                              TeleCargoHRocketCargo_Var.get(),
+                              teledropHatch_Var.get(),
+                              teledropCargo_Var.get(),
                               startPos.get(),
                               startLeft.get(),
-                              comments.get(),
+                              comments.get(1.0, END),
                               scoutName.get(),
                               startRight.get(),
                               teamnum.get(),
@@ -706,8 +706,9 @@ def send():
     print(sendMSG)
     if (sendMSG is True) & (badData_State.get() is False):
         print('calling Reinitscreen')
+        sendToDatabase()
         reinitscreen()
-        
+
         
     if (badData_State.get() is True) & (sendMSG is True):
         reinitscreen()
@@ -728,6 +729,6 @@ sendBTN.grid(row=5, column=1, ipadx=100)
 #match_no='2'
 #getNextMatch()
 
-teamno = 1986
+#teamno = 1986
 #a thing
 window.mainloop()

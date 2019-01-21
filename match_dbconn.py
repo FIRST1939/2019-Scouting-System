@@ -1,6 +1,7 @@
 import mysql.connector as mariadb
 
-mariadb_connection = mariadb.connect(user='mscout',password='mscout',host='localhost',database='match_scout')
+#mariadb_connection = mariadb.connect(user='mscout',password='mscout',host='localhost',database='match_scout')
+mariadb_connection = mariadb.connect(user='mscout',password='mscout',host='192.168.100.31',database='match_scout')
 cursor = mariadb_connection.cursor()
 
 
@@ -21,7 +22,7 @@ def getMatchInfo(match_no,pos):
 def getAllMatchInfo(match_no,pos):
    # print("Match No = ",match_no)
    
-    sql = "select teamNo,scout from matchInfo where matchNo = %s and position = %s"
+    sql = "select teamNo,scoutName from matchInfo where matchNo = %s and position = %s"
     cursor.execute(sql,(match_no,pos,))
     row = cursor.fetchone()
     return row
@@ -49,10 +50,10 @@ def setCurrentMatch(currentMatch):
     cursor.execute(sql,(currentMatch,))
     mariadb_connection.commit()
 
-def setScout(scout,currentMatch,pos):
+def setScout(scoutName,currentMatch,pos):
  #   print("Calling with ",currentMatch,pos)
-    sql = "update matchInfo set scout = %s where matchNo = %s and position = %s"
-    cursor.execute(sql,(scout,currentMatch,pos,))
+    sql = "update matchInfo set scoutName = %s where matchNo = %s and position = %s"
+    cursor.execute(sql,(scoutName,currentMatch,pos,))
     mariadb_connection.commit()
 
 def setAllMatchInfo(matchNo,teamNo,pos):
@@ -70,117 +71,151 @@ def clearMatchScout(matchNo):
     mariadb_connection.commit()
 
 def setMatchScout(matchNo,
-                  teamNo,
-                     autoCrossLineTry,
-                     autoCrossLineSuccess,
-                     autoBoxToSwitchTry,
-                     autoBoxToSwitchCount,
-                     autoBoxToWrongSwitchTry,
-                     autoBoxToWrongSwitchCount,
-                     autoBoxToScaleTry,
-                     autoBoxToScaleCount,
-                     autoBoxToWrongScaleTry,
-                     autoBoxToWrongScaleCount,
-                     autoEndWithNewCube,
-                     teleBoxToSwitchCount,
-                     teleBoxtoScaleCount,
-                     teleBoxToOpponentSwitchCount,
-                     teleBoxToExchangeCount,
-                     teleDroppedBoxCount,
-                     teleDefenseType,
-                     tippedBot,
-                     deadBot,
-                     recoveredTippedBot,
-                     recoveredDeadBot,
-                     penaltyStandardFoul,
-                     penaltyTechnicalFoul,
-                     penaltyYellowCard,
-                     penaltyRedCard,
-                     endParked,
-                     endClimbedType,
-                     endDeployRampSingle,
-                     endDeployRampDouble,
-                     endClimbedExtendBar,
-                     endCubeAttainment,
-                     endScoringAbility,
-                     postComments):
+				teamNo,
+                crossHABLine,
+                dangerousSSDriving,
+                attemptLvl1,
+                reachLvl1,
+                attemptLvl2,
+                reachLvl2,
+                attemptLvl3,
+                reachLvl3,
+                deployedRamps,
+                attemptDeployedRamps,
+                usedAnotherRobot,
+                lift,
+                attemptLift,
+                defense,
+                noAttempt,
+                groundPickup,
+                SSCargoHatch,
+                SSCargoCargo,
+                touchedRocketLate,
+                deadbot,
+                SSCargoSSHRocketCargo,
+                SSCargoSSMRocketCargo,
+                SSCargoSSLRocketCargo,
+                SSCargoSSHRocketHatch,
+                SSCargoSSMRocketHatch,
+                SSCargoSSLRocketHatch,
+                techFoul,
+                foul,
+                teleCargoCargo,
+                teleCargoHatch,
+                teleHatchLRocketHatch,
+                teleHatchMRocketHatch,
+                teleHatchHRocketHatch,
+                teleCargoLRocketCargo,
+                teleCargoMRocketCargo,
+                teleCargoHRocketCargo,
+                teledropHatch,
+                teledropCargo,
+                startPOS,
+                startLeft,
+                comments,
+                scoutName,
+                startRight,
+                teamNUM):
+    print('this part works!!!!')
     sql = "insert into matchScout (matchNo,\
-                             teamNo,\
-                             autoCrossLineTry,\
-                             autoCrossLineSuccess,\
-                             autoBoxToSwitchTry,\
-                             autoBoxToSwitchCount,\
-                             autoBoxToWrongSwitchTry,\
-                             autoBoxToWrongSwitchCount,\
-                             autoBoxToScaleTry,\
-                             autoBoxToScaleCount,\
-                             autoBoxToWrongScaleTry,\
-                             autoBoxToWrongScaleCount,\
-                             autoEndWithNewCube,\
-                             teleBoxToSwitchCount,\
-                             teleBoxtoScaleCount,\
-                             teleBoxToOpponentSwitchCount,\
-                             teleBoxToExchangeCount,\
-                             teleDroppedBoxCount,\
-                             teleDefenseType,\
-                             tippedBot,\
-                             deadBot,\
-                             recoveredTippedBot,\
-                             recoveredDeadBot,\
-                             penaltyStandardFoul,\
-                             penaltyTechnicalFoul,\
-                             penaltyYellowCard,\
-                             penaltyRedCard,\
-                             endParked,\
-                             endClimbedType,\
-                             endClimbedRampSingle,\
-                             endClimbedRampDouble,\
-                             endClimbedExtendBar,\
-                             endCubeAttainment,\
-                             endScoringAbility,\
-                             postComments) \
+				teamNo, \
+                crossHABLine, \
+                dangerousSSDriving, \
+                attemptLvl1, \
+				reachLvl1, \
+				attemptLvl2, \
+				reachLvl2, \
+				attemptLvl3, \
+				reachLvl3, \
+				deployedRamps, \
+				attemptDeployedRamps, \
+				usedAnotherRobot, \
+				lift, \
+				attemptLift, \
+				defense, \
+				noAttempt, \
+				groundPickup, \
+				SSCargoHatch, \
+				SSCargoCargo, \
+				touchedRocketLate, \
+				deadbot, \
+				SSCargoSSHRocketCargo, \
+				SSCargoSSMRocketCargo, \
+				SSCargoSSLRocketCargo, \
+				SSCargoSSHRocketHatch, \
+				SSCargoSSMRocketHatch, \
+				SSCargoSSLRocketHatch, \
+				techFoul, \
+				foul, \
+				teleCargoCargo, \
+				teleCargoHatch, \
+				teleHatchLRocketHatch, \
+				teleHatchMRocketHatch, \
+				teleHatchHRocketHatch, \
+				teleCargoLRocketCargo, \
+				teleCargoMRocketCargo, \
+				teleCargoHRocketCargo, \
+				teledropHatch, \
+				teledropCargo, \
+				startPOS, \
+				startLeft, \
+				Comments, \
+				scoutName, \
+				startRight, \
+				teamNUM) \
                             values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
                                    %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
                                    %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
-                                   %s,%s,%s,%s,%s)"
+                                   %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
+                                   %s,%s,%s,%s,%s,%s)"
 
     cursor.execute(sql,(matchNo,
-                        teamNo,
-                         autoCrossLineTry,
-                         autoCrossLineSuccess,
-                         autoBoxToSwitchTry,
-                         autoBoxToSwitchCount,
-                         autoBoxToWrongSwitchTry,
-                         autoBoxToWrongSwitchCount,
-                         autoBoxToScaleTry,
-                         autoBoxToScaleCount,
-                         autoBoxToWrongScaleTry,
-                         autoBoxToWrongScaleCount,
-                         autoEndWithNewCube,
-                         teleBoxToSwitchCount,
-                         teleBoxtoScaleCount,
-                         teleBoxToOpponentSwitchCount,
-                         teleBoxToExchangeCount,
-                         teleDroppedBoxCount,
-                         teleDefenseType,
-                         tippedBot,
-                         deadBot,
-                         recoveredTippedBot,
-                         recoveredDeadBot,
-                         penaltyStandardFoul,
-                         penaltyTechnicalFoul,
-                         penaltyYellowCard,
-                         penaltyRedCard,
-                         endParked,
-                         endClimbedType,
-                         endDeployRampSingle,
-                         endDeployRampDouble,
-                         endClimbedExtendBar,
-                         endCubeAttainment,
-                         endScoringAbility,
-                         postComments,))
-    mariadb_connection.commit()
-    
+				teamNo,
+                crossHABLine,
+                dangerousSSDriving,
+                attemptLvl1,
+                reachLvl1,
+                attemptLvl2,
+                reachLvl2,
+                attemptLvl3,
+                reachLvl3,
+                deployedRamps,
+                attemptDeployedRamps,
+                usedAnotherRobot,
+                lift,
+                attemptLift,
+                defense,
+                noAttempt,
+                groundPickup,
+                SSCargoHatch,
+                SSCargoCargo,
+                touchedRocketLate,
+                deadbot,
+                SSCargoSSHRocketCargo,
+                SSCargoSSMRocketCargo,
+                SSCargoSSLRocketCargo,
+                SSCargoSSHRocketHatch,
+                SSCargoSSMRocketHatch,
+                SSCargoSSLRocketHatch,
+                techFoul,
+                foul,
+                teleCargoCargo,
+                teleCargoHatch,
+                teleHatchLRocketHatch,
+                teleHatchMRocketHatch,
+                teleHatchHRocketHatch,
+                teleCargoLRocketCargo,
+                teleCargoMRocketCargo,
+                teleCargoHRocketCargo,
+                teledropHatch,
+                teledropCargo,
+                startPOS,
+                startLeft,
+                comments,
+                scoutName,
+                startRight,
+                teamNUM))
+    mariadb_connection.commit()   
 
 
 
