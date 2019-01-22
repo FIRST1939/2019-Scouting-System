@@ -59,7 +59,7 @@ def updateInfoLabels():
         if row[1] is None:
             scoutName = "XXXXXXXXXX"
         else:
-            scout = row[1]
+            scoutName = row[1]
         
         labelstrs[pos] = pos + " " + str(row[0]) + " " + scoutName
         teams[pos] = row[0]
