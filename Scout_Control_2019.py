@@ -168,4 +168,4 @@ match_no = '1'
 updateInfoLabels()
 checkScoutStatus()            
 
-mainloop()
+win.mainloop()
