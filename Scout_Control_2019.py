@@ -157,10 +157,11 @@ labels["B2"] = infoLabelB2
 labels["B3"] = infoLabelB3
  
 exitButton = Button(win,text = "Exit", command=exitButton)
-exitButton.grid(row=25,column=5)
+exitButton.grid(row=6,column=4)
 
 resetButton = Button(win,text = "Reset Match Data", command=resetButton)
-resetButton.grid(row=20,column=5)
+resetButton.grid(row=5,column=3, columnspan=2)
+                 
 
 win.geometry('800x480')
 

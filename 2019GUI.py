@@ -1,4 +1,4 @@
-                 #imports
+#imports
 from tkinter import Entry
 from tkinter import Tk
 from tkinter import Checkbutton
@@ -13,11 +13,10 @@ from tkinter import END
 from tkinter import Radiobutton
 from tkinter import Text
 import sys
-import psutil
-import subprocess
 #import os
 import match_dbconn
-
+#import psutil
+#import subprocess
     
 
 #opening tkinter
@@ -61,47 +60,47 @@ def getNextMatch():
 def sendToDatabase():
     match_dbconn.setMatchScout(match_no,
                                teamno,
-                               crossHABLine_State.get(),
-                               dangerousSSDriving_State.get(),
-    	                       attemptLvl1_State.get(),
-                               reachLvl1_State.get(),
-                               attemptLvl2_State.get(),
-                               reachLvl2_State.get(),
-                               attemptLvl3_State.get(),
-                               reachLvl3_State.get(),
-                               deployedRamps_State.get(),
-                               attemptDeployedRamps_State.get(),
-                               usedAnotherRobot_State.get(),
-                               lift_State.get(),
-                               attemptLift_State.get(),
-                               defense_State.get(),
-                              noAttempt_State.get(),
-                              groundPickup_State.get(),
-                              SSCargoHatch_Var.get(),
-                              SSCargoCargo_Var.get(),
-                              touchedRocketLate_State.get(),
-                              deadbot_State.get(),
-                              SSCargoSSHRocketCargo_Var.get(),
-                              SSCargoSSMRocketCargo_Var.get(),
-                              SSCargoSSLRocketCargo_Var.get(),
-                              SSCargoSSHRocketHatch_Var.get(),
-                              SSCargoSSMRocketHatch_Var.get(),
-                              SSCargoSSLRocketHatch_Var.get(),
-                              techFoul_Var.get(),
-                              foul_Var.get(),
-                              teleCargoCargo_Var.get(),
-                              teleCargoHatch_Var.get(),
-                              TeleHatchLRocketHatch_Var.get(),
-                              TeleHatchMRocketHatch_Var.get(),
-                              TeleHatchHRocketHatch_Var.get(),
-                              TeleCargoLRocketCargo_Var.get(),
-                              TeleCargoMRocketCargo_Var.get(),
-                              TeleCargoHRocketCargo_Var.get(),
-                              teledropHatch_Var.get(),
-                              teledropCargo_Var.get(),
+                               crossHABLine.get(),
+                               dangerousSSDriving.get(),
+    	                       attemptLvl1.get(),
+                               reachLvl1.get(),
+                               attemptLvl2.get(),
+                               reachLvl2.get(),
+                               attemptLvl3.get(),
+                               reachLvl3.get(),
+                               deployedRamps.get(),
+                               attemptDeployedRamps.get(),
+                               usedAnotherRobot.get(),
+                               lift.get(),
+                               attemptLift.get(),
+                               defense.get(),
+                              noAttempt.get(),
+                              groundPickup.get(),
+                              SSCargoHatch.get(),
+                              SSCargoCargo.get(),
+                              touchedRocketLate.get(),
+                              deadbot.get(),
+                              SSCargoSSHRocketCargo.get(),
+                              SSCargoSSMRocketCargo.get(),
+                              SSCargoSSLRocketCargo.get(),
+                              SSCargoSSHRocketHatch.get(),
+                              SSCargoSSMRocketHatch.get(),
+                              SSCargoSSLRocketHatch.get(),
+                              techFoul.get(),
+                              foul.get(),
+                              teleCargoCargo.get(),
+                              teleCargoHatch.get(),
+                              TeleHatchLRocketHatch.get(),
+                              TeleHatchMRocketHatch.get(),
+                              TeleHatchHRocketHatch.get(),
+                              TeleCargoLRocketCargo.get(),
+                              TeleCargoMRocketCargo.get(),
+                              TeleCargoHRocketCargo.get(),
+                              teledropHatch.get(),
+                              teledropCargo.get(),
                               startPos.get(),
                               startLeft.get(),
-                              comments.get(1.0, END),
+                              comments.get(),
                               scoutName.get(),
                               startRight.get(),
                               teamnum.get(),
@@ -174,12 +173,14 @@ tab_control.pack(expand=1, fill='both')
 
 #keyboard
 def popup_keyboard(event):
-    if checkIfProcessRunning(user/bin/florence) is True:
-         p = subprocess.Popen(['florence show'], shell=True, stdout= subprocess.PIPE, stderr= subprocess.PIPE, universal_newlines=True)
+    if 0 :
+      if checkIfProcessRunning('/usr/bin/florence') is True:
+          subprocess.Popen(['florence show'], shell=True, stdout= subprocess.PIPE, stderr= subprocess.PIPE, universal_newlines=True)
 #    os.popen('matchbox-keyboard','r',4096)
-    else:   
-        subprocess.Popen(['florence'], shell=True)
-           
+      else:   
+          subprocess.Popen(['/usr/bin/florence'], shell=True)
+    else:
+        pass       
     
     
 def checkIfProcessRunning(processName):
@@ -195,6 +196,7 @@ def checkIfProcessRunning(processName):
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             pass
     return False;
+    
 #put the buttons and spindowns and text boxes and other fun stuff here
 crossHABLine_State = BooleanVar(False)
 crossHABLine = Checkbutton(sandstorm, text='Cross HAB Line', var=crossHABLine_State)
@@ -727,9 +729,8 @@ def send():
     print(sendMSG)
     if (sendMSG is True) & (badData_State.get() is False):
         print('calling Reinitscreen')
-        sendToDatabase()
         reinitscreen()
-
+        
         
     if (badData_State.get() is True) & (sendMSG is True):
         reinitscreen()
@@ -743,13 +744,13 @@ sendBTN.grid(row=5, column=1, ipadx=100)
 
     #finish
 #    dp start
-#if len(sys.argv) > 1:
-#    position = sys.argv[1]
-#else:
-#    position='R1'
-#match_no='2'
-#getNextMatch()
+if len(sys.argv) > 1:
+   position = sys.argv[1]
+else:
+   position='R1'
+match_no='1'
+getNextMatch()
 
-#teamno = 1986
+#amno = 1986
 #a thing
 window.mainloop()
