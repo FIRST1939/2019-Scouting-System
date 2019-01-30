@@ -216,6 +216,3 @@ def setMatchScout(matchNo,
                 startRight,
                 teamNUM))
     mariadb_connection.commit()   
-
-
-

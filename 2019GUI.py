@@ -173,29 +173,29 @@ tab_control.pack(expand=1, fill='both')
 
 #keyboard
 def popup_keyboard(event):
-    if 0 :
-      if checkIfProcessRunning('/usr/bin/florence') is True:
-          subprocess.Popen(['florence show'], shell=True, stdout= subprocess.PIPE, stderr= subprocess.PIPE, universal_newlines=True)
-#    os.popen('matchbox-keyboard','r',4096)
-      else:   
-          subprocess.Popen(['/usr/bin/florence'], shell=True)
-    else:
-        pass       
+#    if 0 :
+#      if checkIfProcessRunning('/usr/bin/florence') is True:
+#          subprocess.Popen(['florence show'], shell=True, stdout= subprocess.PIPE, stderr= subprocess.PIPE, universal_newlines=True)
+##    os.popen('matchbox-keyboard','r',4096)
+#      else:   
+#          subprocess.Popen(['/usr/bin/florence'], shell=True)
+#    else:
+#        pass       
+    pass    
     
-    
-def checkIfProcessRunning(processName):
-    '''
-    Check if there is any running process that contains the given name processName.
-    '''
-    #Iterate over the all the running process
-    for proc in psutil.process_iter():
-        try:
-            # Check if process name contains the given name string.
-            if processName.lower() in proc.name().lower():
-                return True
-        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-            pass
-    return False;
+#def checkIfProcessRunning(processName):
+#    '''
+#    Check if there is any running process that contains the given name processName.
+#    '''
+#    #Iterate over the all the running process
+#    for proc in psutil.process_iter():
+#        try:
+#            # Check if process name contains the given name string.
+#            if processName.lower() in proc.name().lower():
+#                return True
+#        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+#            pass
+#    return False;
     
 #put the buttons and spindowns and text boxes and other fun stuff here
 crossHABLine_State = BooleanVar(False)
@@ -724,9 +724,12 @@ teamnumLBL = Label(preMatch, text='  Team# you are with:')
 teamnumLBL.grid(row=0, column=2)
 
 def send():
+    global comments
     sendMSG = messagebox.askokcancel('Are you sure?', 'If you are ready to send click ok. If you are not ready click cancel, and click send again when you are ready.')
     print(badData_State.get())
     print(sendMSG)
+    commentz = comments.replace("\n","")
+    comments = commentz
     if (sendMSG is True) & (badData_State.get() is False):
         print('calling Reinitscreen')
         reinitscreen()
