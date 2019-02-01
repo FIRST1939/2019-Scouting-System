@@ -1,4 +1,4 @@
-#imports
+                 #imports
 from tkinter import Entry
 from tkinter import Tk
 from tkinter import Checkbutton
@@ -15,8 +15,7 @@ from tkinter import Text
 import sys
 #import os
 import match_dbconn
-#import psutil
-#import subprocess
+
     
 
 #opening tkinter
@@ -53,6 +52,7 @@ def getNextMatch():
    print('current match %s',match_no)
    if new_match_no != match_no:
        print('reinitialize screens')
+       match_no = new_match_no
        getTeam()
        match_dbconn.setScout(scoutName.get(),match_no,position)
    window.after(2000,getNextMatch)
@@ -173,29 +173,8 @@ tab_control.pack(expand=1, fill='both')
 
 #keyboard
 def popup_keyboard(event):
-#    if 0 :
-#      if checkIfProcessRunning('/usr/bin/florence') is True:
-#          subprocess.Popen(['florence show'], shell=True, stdout= subprocess.PIPE, stderr= subprocess.PIPE, universal_newlines=True)
-##    os.popen('matchbox-keyboard','r',4096)
-#      else:   
-#          subprocess.Popen(['/usr/bin/florence'], shell=True)
-#    else:
-#        pass       
-    pass    
-    
-#def checkIfProcessRunning(processName):
-#    '''
-#    Check if there is any running process that contains the given name processName.
-#    '''
-#    #Iterate over the all the running process
-#    for proc in psutil.process_iter():
-#        try:
-#            # Check if process name contains the given name string.
-#            if processName.lower() in proc.name().lower():
-#                return True
-#        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-#            pass
-#    return False;
+#    os.popen('matchbox-keyboard','r',4096)
+     pass   
     
 #put the buttons and spindowns and text boxes and other fun stuff here
 crossHABLine_State = BooleanVar(False)
@@ -724,13 +703,9 @@ teamnumLBL = Label(preMatch, text='  Team# you are with:')
 teamnumLBL.grid(row=0, column=2)
 
 def send():
-    global comments
     sendMSG = messagebox.askokcancel('Are you sure?', 'If you are ready to send click ok. If you are not ready click cancel, and click send again when you are ready.')
     print(badData_State.get())
     print(sendMSG)
-# 
-#    commentz = comments.replace("\n","")
-#    comments = commentz
     if (sendMSG is True) & (badData_State.get() is False):
         print('calling Reinitscreen')
         reinitscreen()
@@ -752,7 +727,7 @@ if len(sys.argv) > 1:
    position = sys.argv[1]
 else:
    position='R1'
-match_no='1'
+match_no='2'
 getNextMatch()
 
 #amno = 1986

@@ -17,7 +17,7 @@ def getMatchInfo(match_no,pos):
     sql = "select teamNo from matchInfo where matchNo = %s and position = %s"
     cursor.execute(sql,(match_no,pos,))
     row = cursor.fetchone()
-    return row[0]
+    return row
 
 def getAllMatchInfo(match_no,pos):
    # print("Match No = ",match_no)
@@ -25,7 +25,7 @@ def getAllMatchInfo(match_no,pos):
     sql = "select teamNo,scoutName from matchInfo where matchNo = %s and position = %s"
     cursor.execute(sql,(match_no,pos,))
     row = cursor.fetchone()
-    return row
+    return row[0]
 
 def getNextMatch():
     sql = "select matchNo from matchCurrent where id = 1"
@@ -72,9 +72,6 @@ def clearMatchScout(matchNo):
 
 def setMatchScout(matchNo,
 				teamNo,
-                crossHABLine,
-                dangerousSSDriving,
-                attemptLvl1,
                 reachLvl1,
                 attemptLvl2,
                 reachLvl2,
@@ -116,12 +113,9 @@ def setMatchScout(matchNo,
                 scoutName,
                 startRight,
                 teamNUM):
-    print('this part works!!!!')
+       
     sql = "insert into matchScout (matchNo,\
 				teamNo, \
-                crossHABLine, \
-                dangerousSSDriving, \
-                attemptLvl1, \
 				reachLvl1, \
 				attemptLvl2, \
 				reachLvl2, \
@@ -162,18 +156,14 @@ def setMatchScout(matchNo,
 				Comments, \
 				scoutName, \
 				startRight, \
-				teamNUM) \
+				teamNUM, \
                             values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
                                    %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
                                    %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
-                                   %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
-                                   %s,%s,%s,%s,%s,%s)"
+                                   %s,%s,%s,%s,%s)"
 
     cursor.execute(sql,(matchNo,
 				teamNo,
-                crossHABLine,
-                dangerousSSDriving,
-                attemptLvl1,
                 reachLvl1,
                 attemptLvl2,
                 reachLvl2,
@@ -216,3 +206,6 @@ def setMatchScout(matchNo,
                 startRight,
                 teamNUM))
     mariadb_connection.commit()   
+
+
+
