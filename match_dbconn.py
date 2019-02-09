@@ -72,6 +72,9 @@ def clearMatchScout(matchNo):
 
 def setMatchScout(matchNo,
 				teamNo,
+                crossHABLine,
+                dangerousSSDriving,
+                attemptLvl1,
                 reachLvl1,
                 attemptLvl2,
                 reachLvl2,
@@ -116,6 +119,9 @@ def setMatchScout(matchNo,
        
     sql = "insert into matchScout (matchNo,\
 				teamNo, \
+                crossHABLine,\
+                dangerousSSDriving,\
+                attemptLvl1, \
 				reachLvl1, \
 				attemptLvl2, \
 				reachLvl2, \
@@ -156,15 +162,19 @@ def setMatchScout(matchNo,
 				Comments, \
 				scoutName, \
 				startRight, \
-				teamNUM, \
-                            values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
-                                   %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
-                                   %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
-                                   %s,%s,%s,%s,%s)"
+				teamNUM) \
+                values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
+                       %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
+                       %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
+                       %s,%s,%s,%s,%s,%s,%s,%s,%s,%s, \
+                       %s,%s,%s,%s,%s,%s)"
 
     cursor.execute(sql,(matchNo,
 				teamNo,
-                reachLvl1,
+                crossHABLine,
+                dangerousSSDriving,
+                attemptLvl1, 
+               reachLvl1,
                 attemptLvl2,
                 reachLvl2,
                 attemptLvl3,
