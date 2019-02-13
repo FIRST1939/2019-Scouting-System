@@ -58,6 +58,7 @@ def getNextMatch():
    window.after(2000,getNextMatch)
     
 def sendToDatabase():
+    print(teamnum.get())
     match_dbconn.setMatchScout(match_no,
                                teamno,
                                crossHABLine_State.get(),
@@ -437,7 +438,7 @@ SSCargoSSHRocketCargoM = Button(sandstorm, text='-', command=SSCargoSSHRocketCar
 SSCargoSSHRocketCargo.grid(column=6, row=2)
 SSCargoSSHRocketCargoP.grid(column=7, row=2)
 SSCargoSSHRocketCargoM.grid(column=5, row=2)
-SSCargoSSHRocketCargolbl = Label(sandstorm, text = "Med Rocket Cargo")
+SSCargoSSHRocketCargolbl = Label(sandstorm, text = "High Rocket Cargo")
 SSCargoSSHRocketCargolbl.grid(column=4, row=2)
 
 
@@ -696,7 +697,7 @@ commentsLBL = Label(postMatch, text='Comments:')
 commentsLBL.grid(column=0, row=3, pady=15, columnspan=3)
 commentSpacingLBL = Label(postMatch, text=' ').grid(column=2, row=0, padx=10)
     
-teamnum = ttk.Entry(preMatch, width=10, text=1939)
+teamnum = ttk.Entry(preMatch, width=10)
 teamnum.bind('<Button-1>', popup_keyboard)
 teamnum.grid(column=3, row=0)
 teamnumLBL = Label(preMatch, text='  Team# you are with:')
@@ -716,7 +717,7 @@ def send():
         reinitscreen()
 
 send_State = BooleanVar(False)
-sendBTN = Button(postMatch, text='send', command=send)
+sendBTN = Button(postMatch, text='Send', command=send)
 sendBTN.grid(row=5, column=1, ipadx=100)
 #define button effects
 

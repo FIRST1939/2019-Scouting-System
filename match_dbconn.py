@@ -17,7 +17,7 @@ def getMatchInfo(match_no,pos):
     sql = "select teamNo from matchInfo where matchNo = %s and position = %s"
     cursor.execute(sql,(match_no,pos,))
     row = cursor.fetchone()
-    return row
+    return row[0]
 
 def getAllMatchInfo(match_no,pos):
    # print("Match No = ",match_no)
