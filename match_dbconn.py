@@ -60,6 +60,8 @@ def setAllMatchInfo(matchNo,teamNo,pos):
     sql = "insert into matchInfo (matchNo,teamNo,position) values(%s,%s,%s)"
     cursor.execute(sql,(matchNo,teamNo,pos,))
     mariadb_connection.commit()
+    
+
 
 def clearMatchInfo():
     sql = "truncate table matchInfo"

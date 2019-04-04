@@ -44,6 +44,23 @@ def getTeam():
     global teamno
     teamno = team_no
     
+#def breakReminder(pos, scoutName):
+#    breakNum = 1
+#    sinceLastNameChange = 1
+#    savedName = '  '
+#    if pos[1] == "1":
+#        breakNum = 8
+#    if pos[1] == "2":
+#        breakNum = 12
+#    if pos[1] == "3":
+#        breakNun = 10
+#    if savedName == scoutName:
+#        sinceLastNameChange+1
+#    else:
+#        sinceLastNameChange = 1
+#        savedName 
+#    if sinceLastNameChange >= breakNum:
+#    messagebox.showInfo('Break Reminder', 'Don't forget to take breaks')
 def getNextMatch():
    new_match_no = match_dbconn.getNextMatch();
    print('new match %s',new_match_no)
